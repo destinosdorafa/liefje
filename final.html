@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Final Reveal</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  font-family:Arial, sans-serif;
+  background:black;
+  color:white;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+header{
+  width:100%;
+  text-align:center;
+  padding:20px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+}
+
+header h1{
+  font-family:'Great Vibes', cursive;
+  font-size:48px;
+  margin:0;
+}
+
+#intro{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+#intro button{
+  margin-top:20px;
+  padding:15px 30px;
+  font-size:20px;
+  border:none;
+  border-radius:10px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+}
+
+.container{
+  max-width:900px;
+  width:90%;
+  text-align:center;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 10px 40px rgba(255,0,120,0.4);
+  opacity:0;
+  transition:opacity 1s ease;
+  margin:50px auto;
+}
+
+.reason{
+  margin:15px 0;
+  font-size:22px;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+.message{
+  margin-top:20px;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:24px;
+  animation:floatHeart 6s linear infinite;
+  opacity:0.9;
+  z-index:998;
+}
+
+@keyframes floatHeart{
+0%{transform:translateY(0) scale(0.8); opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-110vh) scale(1.4); opacity:0;}
+}
+
+audio{
+  display:none;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>10 Reasons to Love You</h1>
+</header>
+
+<div id="intro">
+  <button id="startBtn">Do you know?</button>
+</div>
+
+<div class="container" id="container">
+  <div id="reasonsContainer">
+    <div class="reason">1 — Similarity</div>
+    <div class="reason">2 — Intelligence</div>
+    <div class="reason">3 — Cuteness</div>
+    <div class="reason">4 — Blue Eyes</div>
+    <div class="reason">5 — Kindness</div>
+    <div class="reason">6 — Trustiness</div>
+    <div class="reason">7 — Adventure</div>
+    <div class="reason">8 — Funny</div>
+    <div class="reason">9 — Beautiful</div>
+    <div class="reason">10 — Slijmbal</div>
+  </div>
+
+  <div class="message" id="messageText">
+    <p>
+      Today marks 3 months that we are in a relationship. For 3 months I have you by my side. I wanted to do something special, but being 10,000 km away I couldn’t think of anything better than using one of my greatest skills to show how important you are to me.<br><br>
+      You were the only person who, after years, made me give up my single life. The person who made me commit to a long-distance relationship that I swore I would never do. The person who opened my heart to love, made me want to explore the world by someone’s side, and honestly I couldn’t be happier.<br><br>
+      You are my darling, my precious, my pretty blue eyed princess, my gringa, my blonde, my sweetheart, my treasure, my european, my girlfriend, my woman, my almost perfect socialist philosopher vegetarian.<br><br>
+      You are many things, but most importantly, you are mine. You are mine, and I am yours!<br><br>
+      I LOVE YOU!<br>
+      EU TE AMO!<br>
+      IK HOU VAN JAL!<br><br>
+      I want to grow old by your side with all the love of this universe and all universes that may exist. From your Carioca, Rafael.<br><br>
+      PS: COM TODO REXXXPEITO! EU TE AMO PRA CARALHO!
+    </p>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const startBtn = document.getElementById("startBtn");
+const container = document.getElementById("container");
+const reasons = document.querySelectorAll(".reason");
+const music = document.getElementById("bgMusic");
+
+startBtn.addEventListener("click", () => {
+  // mostra container
+  container.style.opacity = 1;
+  // toca música
+  music.play().catch(()=>{});
+  
+  // fade in reasons
+  reasons.forEach((r,i)=>{
+    setTimeout(()=>{ r.style.opacity = 1; }, i*1000);
+  });
+
+  // corações flutuantes
+  setInterval(()=>{
+    const heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*30)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  },300);
+
+  // esconde botão intro
+  document.getElementById("intro").style.display="none";
+});
+</script>
+
+</body>
+</html>

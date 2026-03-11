@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Level 2</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+background-image:url("page1.jpeg");
+background-size:cover;
+background-position:center;
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+header{
+width:100%;
+text-align:center;
+padding:20px 0;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(6px);
+}
+
+header h1{
+font-family:'Great Vibes', cursive;
+font-size:48px;
+margin:0;
+}
+
+.container{
+text-align:center;
+max-width:900px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(14px);
+padding:40px;
+border-radius:18px;
+margin-top:40px;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:30px;
+}
+
+.card{
+position:relative;
+background:rgba(255,120,150,0.18);
+backdrop-filter:blur(14px);
+padding:22px;
+border-radius:16px;
+cursor:pointer;
+transition:0.35s;
+border:1px solid rgba(255,170,190,0.3);
+box-shadow:0 6px 20px rgba(255,80,120,0.25);
+min-height:120px;
+}
+
+.card:hover{
+transform:scale(1.03);
+}
+
+.card.active{
+transform:scale(1.05);
+box-shadow:0 15px 35px rgba(255,80,120,0.4);
+}
+
+.cardContent{
+display:none;
+margin-top:15px;
+}
+
+.card.active .cardContent{
+display:block;
+}
+
+.card input{
+margin-top:10px;
+width:70px;
+height:35px;
+border-radius:8px;
+border:none;
+text-align:center;
+font-size:16px;
+}
+
+.card input:focus{
+outline:2px solid #ff6b8f;
+}
+
+.badge{
+position:absolute;
+top:-10px;
+left:-10px;
+background:#ff4d6d;
+color:white;
+width:34px;
+height:34px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-weight:bold;
+font-size:14px;
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
+opacity:0;
+transition:0.3s;
+}
+
+.badge.active{
+opacity:1;
+}
+
+button{
+padding:12px 30px;
+font-size:16px;
+border:none;
+border-radius:10px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+margin-top:30px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#ff3355;
+}
+
+#message{
+margin-top:20px;
+}
+
+.finalReveal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:1s;
+z-index:999;
+}
+
+.finalReveal.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.finalCard{
+background:rgba(255,120,150,0.25);
+backdrop-filter:blur(18px);
+padding:40px;
+border-radius:20px;
+max-width:420px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+.finalCard h2{
+font-family:'Great Vibes', cursive;
+font-size:48px;
+margin-bottom:15px;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:24px;
+animation:floatHeart 6s linear infinite;
+opacity:0.9;
+z-index:998;
+}
+
+@keyframes floatHeart{
+
+0%{
+transform:translateY(0) scale(0.8);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-110vh) scale(1.4);
+opacity:0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>10 Reasons to Love You</h1>
+</header>
+
+<div class="container">
+
+<h2>Can you remember the reasons?</h2>
+
+<p>Click the cards and reconstruct the order.</p>
+
+<div class="cards" id="cardsContainer">
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Intelligence</h3>
+<div class="cardContent">
+<p>Your intelligence is phenomenal. I love talking about all kinds of subjects with you because you’re logical. You question me, you understand me, you challenge me, and you complete my ideas. You’re my little nerd, and your intellect is your most attractive trait. 🧠✨</p>
+<input type="number" min="1" max="10" id="r2" oninput="updateBadge(this)">
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Cuteness</h3>
+<div class="cardContent">
+<p>You are the cutest thing in this universe. It’s even hard to say, measure, or truly understand your cuteness, but it captivates me. Looking at you, hearing your voice, or seeing anything you do makes me want to squeeze you, hug you, put you in my pocket, and keep you forever. You’re my little cute darling, and I just cannot handle this. 🫶✨</p>
+<input type="number" min="1" max="10" id="r3" oninput="updateBadge(this)">
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Blue Eyes</h3>
+<div class="cardContent">
+<p>You have the most beautiful eyes I’ve ever seen. They were the first thing I noticed and the first feature that attracted me. Looking into your eyes brings me peace, hypnotizes me, and makes me want to forget the whole world and look only at them forever. You’re my blue-eyed treasure, and ik hou van yal blauwe ogen. 💙✨</p>
+<input type="number" min="1" max="10" id="r4" oninput="updateBadge(this)">
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Kindness</h3>
+<div class="cardContent">
+<p>You are an extremely kind person. The softness of your voice alone is already enough, but together with your cuteness, the lightness with which you deal with people, and the constant smile on your face, it makes anyone like you. Having you by my side and knowing that you are kind and loving gives me confidence. You are my precious sweetheart, and your smile enchants me. 😊✨</p>
+<input type="number" min="1" max="10" id="r5" oninput="updateBadge(this)">
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Trustiness</h3>
+<div class="cardContent">
+<p>You are super trustworthy. You are consistent and sincere. Being near you gives me a sense of safety and complete confidence—I trust you with my achievements and my frustrations. You are my safe haven, and you make me feel like I could go to the ends of the earth with my eyes closed by your side. 🌍💖</p>
+<input type="number" min="1" max="10" id="r6" oninput="updateBadge(this)">
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Adventure</h3>
+<div class="cardContent">
+<p>You’re an explorer. You love to travel and discover, to challenge yourself and be challenged. You enjoy experiencing new things and always want to grow, to know new places, new cultures, new languages. You’re my adventurer with your adventure shoes, and I want to explore the whole world by your side. 🌍✨</p>
+<input type="number" min="1" max="10" id="r7" oninput="updateBadge(this)">
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Funny</h3>
+<div class="cardContent">
+<p>You’re funny. Your sense of humor is unique and intelligent, and you know the difference between a joke and an opinion. You laugh at my silly jokes and come up with ones just as silly. You’re my idiot, and every day with you is a happy one. 😄❤️</p>
+<input type="number" min="1" max="10" id="r8" oninput="updateBadge(this)">
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Beautiful</h3>
+<div class="cardContent">
+<p>You’re beautiful! Your eyes are incredibly important, but your smile, your hair, your gaze, your skin—everything about you is perfect. You’re my pretty princess, and looking at you captivates me! 👑💖</p>
+<input type="number" min="1" max="10" id="r9" oninput="updateBadge(this)">
+</div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+<div class="badge"></div>
+<h3>Slijmbal</h3>
+<div class="cardContent">
+<p>You’re sweet. What can I say? I love being loved, I adore hearing that you love me, how much you love me, what you love about me, what you admire, and what excites you. All the other reasons are for who you are, but this one is for how you treat me, and I love that about you. You’re my Slijmbal, and with you, I feel like the most amazing man in the world. 💖</p>
+<input type="number" min="1" max="10" id="r10" oninput="updateBadge(this)">
+</div>
+</div>
+
+</div>
+
+<button onclick="checkLevel2()">Unlock</button>
+
+<p id="message"></p>
+
+</div>
+
+<div id="finalReveal" class="finalReveal">
+
+<div class="finalCard">
+
+<h2>Similarity</h2>
+
+<p>
+
+I made a list of your qualities, the things I love about you, and the things that attract me the most.
+
+<br><br>
+
+But the truth is, what I love most about you is how much we’re alike.
+
+<br><br>
+
+Alike in thought, alike in temperament, alike in tastes, dreams, and desires
+
+<br><br>
+
+You’re my soulmate, my other half. 
+
+<br><br>
+
+You’re perfect for me, and I’m perfect for you.
+
+</p>
+
+<button onclick="goToFinalPuzzle()">Final Puzzle</button>
+
+</div>
+
+</div>
+
+<script>
+
+function toggleCard(card){
+
+let cards=document.querySelectorAll(".card")
+
+cards.forEach(c=>{
+c.classList.remove("active")
+})
+
+card.classList.add("active")
+
+}
+
+function updateBadge(input){
+
+let card=input.closest(".card")
+let badge=card.querySelector(".badge")
+
+if(input.value!==""){
+
+badge.innerText=input.value
+badge.classList.add("active")
+
+}else{
+
+badge.classList.remove("active")
+
+}
+
+}
+
+function shuffleCards(){
+
+let container=document.getElementById("cardsContainer")
+let cards=Array.from(container.children)
+
+cards.sort(()=>Math.random()-0.5)
+
+container.innerHTML=""
+
+cards.forEach(card=>container.appendChild(card))
+
+}
+
+window.addEventListener("load", shuffleCards)
+
+function createHeart(){
+
+let heart=document.createElement("div")
+
+heart.classList.add("heart")
+
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.fontSize=(20+Math.random()*30)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{heart.remove()},6000)
+
+}
+
+function checkLevel2(){
+
+let correct=[2,3,4,5,6,7,8,9,10]
+
+let inputs=[
+
+document.getElementById("r2").value,
+document.getElementById("r3").value,
+document.getElementById("r4").value,
+document.getElementById("r5").value,
+document.getElementById("r6").value,
+document.getElementById("r7").value,
+document.getElementById("r8").value,
+document.getElementById("r9").value,
+document.getElementById("r10").value
+
+]
+
+let success=true
+
+for(let i=0;i<inputs.length;i++){
+
+if(parseInt(inputs[i])!==correct[i]){
+success=false
+}
+
+}
+
+if(success){
+
+document.getElementById("finalReveal").classList.add("active")
+
+setInterval(createHeart,300)
+
+}else{
+
+document.getElementById("message").innerText="Think about the order I told you..."
+
+}
+
+}
+
+function goToFinalPuzzle(){
+
+window.location.href="finalpuzzle.html"
+
+}
+
+</script>
+
+</body>
+
+</html>

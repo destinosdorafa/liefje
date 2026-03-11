@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>10 Reasons to Love You</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+<h1>10 Reasons to Love You</h1>
+</header>
+
+
+<!-- INTRO SCREEN -->
+
+<div class="intro">
+
+<h2 class="introWord">liefje</h2>
+
+<div class="startBox">
+<button onclick="startGame()">Start</button>
+</div>
+
+</div>
+
+
+<!-- PUZZLE -->
+
+<div class="container hidden" id="puzzle">
+
+<h2 class="word">L I E F J E</h2>
+
+<p class="text">
+You already know that you are my <b>liefje</b>.<br><br>
+
+Numbers have always been something that connects us.<br><br>
+
+To move forward, remember something simple:<br>
+every letter has its own number.<br><br>
+
+Some of them are already revealed.
+</p>
+
+
+<div class="letters">
+
+<div class="letter">
+<span>L</span>
+<input type="number" id="n1" oninput="moveNext(this,'n4')">
+</div>
+
+<div class="letter">
+<span>I</span>
+<input type="number" value="9" disabled>
+</div>
+
+<div class="letter">
+<span>E</span>
+<input type="number" value="5" disabled>
+</div>
+
+<div class="letter">
+<span>F</span>
+<input type="number" id="n4" oninput="moveNext(this,'n6')">
+</div>
+
+<div class="letter">
+<span>J</span>
+<input type="number" value="10" disabled>
+</div>
+
+<div class="letter">
+<span>E</span>
+<input type="number" id="n6">
+</div>
+
+</div>
+
+
+<button onclick="checkPassword()">Unlock</button>
+
+<p id="message"></p>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

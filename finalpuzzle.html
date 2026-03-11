@@ -1,0 +1,272 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Final Puzzle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+background-image:url("page1.jpeg");
+background-size:cover;
+background-position:center;
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+margin:0;
+min-height:100vh;
+}
+
+header{
+width:100%;
+text-align:center;
+padding:20px 0;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(6px);
+}
+
+header h1{
+font-family:'Great Vibes', cursive;
+font-size:48px;
+margin:0;
+}
+
+.container{
+
+margin-top:40px;
+
+max-width:800px;
+width:90%;
+
+text-align:center;
+
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(14px);
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+
+}
+
+.reasons{
+
+margin-top:30px;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:10px;
+
+text-align:left;
+
+}
+
+.reason{
+
+background:rgba(255,120,150,0.18);
+
+padding:10px 15px;
+
+border-radius:10px;
+
+}
+
+.puzzle{
+
+margin-top:40px;
+
+display:flex;
+
+justify-content:center;
+
+gap:8px;
+
+flex-wrap:nowrap;
+
+}
+
+.puzzle input{
+
+width:45px;
+height:45px;
+
+text-align:center;
+
+font-size:18px;
+
+border-radius:8px;
+
+border:none;
+
+}
+
+.puzzle input:focus{
+
+outline:2px solid #ff6b8f;
+
+}
+
+button{
+
+margin-top:30px;
+
+padding:12px 30px;
+
+font-size:16px;
+
+border:none;
+
+border-radius:10px;
+
+background:#ff4d6d;
+
+color:white;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+background:#ff3355;
+
+}
+
+#message{
+
+margin-top:20px;
+
+font-size:16px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>10 Reasons to Love You</h1>
+</header>
+
+<div class="container">
+
+<h2>The Last Puzzle</h2>
+
+<p>
+
+Now the last puzzle.<br><br>
+
+Just like each letter in <b>liefje</b> has a number,
+each reason also has one.
+
+<br><br>
+
+Discover the correct order and unlock the final result.
+
+</p>
+
+<div class="reasons">
+
+<div class="reason">1 — Similarity</div>
+<div class="reason">2 — Intelligence</div>
+<div class="reason">3 — Cuteness</div>
+<div class="reason">4 — Blue Eyes</div>
+<div class="reason">5 — Kindness</div>
+<div class="reason">6 — Trustiness</div>
+<div class="reason">7 — Adventure</div>
+<div class="reason">8 — Funny</div>
+<div class="reason">9 — Beautiful</div>
+<div class="reason">10 — Slijmbal</div>
+
+</div>
+
+<div class="puzzle">
+
+<input id="n1" type="number" min="1" max="10">
+<input id="n2" type="number" min="1" max="10">
+<input id="n3" type="number" min="1" max="10">
+<input id="n4" type="number" min="1" max="10">
+<input id="n5" type="number" min="1" max="10">
+<input id="n6" type="number" min="1" max="10">
+<input id="n7" type="number" min="1" max="10">
+<input id="n8" type="number" min="1" max="10">
+<input id="n9" type="number" min="1" max="10">
+<input id="n10" type="number" min="1" max="10">
+
+</div>
+
+<button onclick="checkFinal()">Unlock Final</button>
+
+<p id="message"></p>
+
+</div>
+
+<script>
+
+function checkFinal(){
+
+let correct=[9,2,4,3,10,5,7,6,8,1]
+
+let inputs=[
+
+n1.value,
+n2.value,
+n3.value,
+n4.value,
+n5.value,
+n6.value,
+n7.value,
+n8.value,
+n9.value,
+n10.value
+
+]
+
+let success=true
+
+for(let i=0;i<correct.length;i++){
+
+if(parseInt(inputs[i])!==correct[i]){
+
+success=false
+
+}
+
+}
+
+if(success){
+
+window.location.href="final.html"
+
+}else{
+
+document.getElementById("message").innerText=
+"Not quite right yet. Think about the order..."
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
+```
